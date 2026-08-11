@@ -13,7 +13,9 @@ import supplierRoutes from "./routes/supplierRoutes.js";
 import queryRoutes from "./routes/queryRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 
-if (process.env.NODE_ENV !== "production") {
+const isRenderDeployment = Boolean(process.env.RENDER || process.env.RENDER_SERVICE_ID || process.env.RENDER_EXTERNAL_URL);
+
+if (!isRenderDeployment && process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
 
