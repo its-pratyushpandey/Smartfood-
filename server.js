@@ -22,11 +22,14 @@ if (!isRenderDeployment && process.env.NODE_ENV !== "production") {
 const app = express();
 const port = process.env.PORT || 5001;
 
+const clientOrigins = process.env.CLIENT_ORIGIN ? process.env.CLIENT_ORIGIN.split(",").map((s) => s.trim()) : [];
+
 const allowedOrigins = [
-  process.env.CLIENT_ORIGIN,
+  ...clientOrigins,
   "http://localhost:5173",
   "http://127.0.0.1:5173",
   "https://smartfood-frontend-sigma.vercel.app",
+  "https://smartfood-frontend-hetki17sk-pratyushs-projects-f95291d2.vercel.app",
 ].filter(Boolean);
 
 app.use(
