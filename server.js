@@ -13,7 +13,9 @@ import supplierRoutes from "./routes/supplierRoutes.js";
 import queryRoutes from "./routes/queryRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 
 const app = express();
 const port = process.env.PORT || 5001;
